@@ -1,0 +1,7 @@
+.vscode
+
+# ignore node modules
+/node_modules
+
+.env
+test.js
