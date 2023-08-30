@@ -9,12 +9,17 @@ const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
+if (process.env.DIR_NAME === "production") {
+  app.set("views", path.join(__dirname, "views"));
+}
 let newTasks = [];
 
 // Middlewares
-app.use(express.static(__dirname + "/public/"));
+if (process.env.DIR_NAME === "production") {
+  app.use(express.static(__dirname + "/public/"));
+} else {
+  app.use(express.static("public"));
+}
 app.use(express.urlencoded({ extended: true }));
 
 // routes

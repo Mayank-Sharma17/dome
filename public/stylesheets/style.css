@@ -83,13 +83,16 @@ body {
   margin-bottom: 15px;
   border-top: none;
   border-right: none;
+  border-left: 2px solid #dcd7c9;
+  border-bottom: 2px solid #dcd7c9;
 }
 
 /* checkbox custom styling */
 .form-check-input[type="checkbox"] {
   border-radius: 1.25em;
-  width: 24px;
-  height: 24px;
+  border: 2px solid #dcd7c9;
+  width: 25px;
+  height: 25px;
   background-color: transparent;
 }
 
