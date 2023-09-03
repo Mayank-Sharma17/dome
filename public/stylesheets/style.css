@@ -31,7 +31,7 @@ body {
 
 .task-button .plus-icon {
   fill: #dcd7c980;
-  transition: fill 0.3s;
+  transition: fill 0.3s ease;
 }
 
 .task-button:hover .plus-icon {
@@ -42,16 +42,12 @@ body {
 .task-container {
   padding: 15px;
   border: 2px solid #dcd7c9;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  transition: all 0.3s ease;
+  border-radius: 0 20px 0;
+  transition: border-radius 0.3s ease;
 }
 
 .task-container:hover {
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 20px 0 20px;
 }
 
 /* task input styling */
@@ -81,10 +77,9 @@ body {
   background-color: transparent;
   padding: 15px;
   margin-bottom: 15px;
+  border: 2px solid #dcd7c9;
   border-top: none;
   border-right: none;
-  border-left: 2px solid #dcd7c9;
-  border-bottom: 2px solid #dcd7c9;
 }
 
 /* checkbox custom styling */
@@ -102,4 +97,19 @@ body {
 
 .completed {
   text-decoration: line-through;
+}
+
+/* Scroll Bar styling */
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #dcd7c9;
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #636b6d;
 }

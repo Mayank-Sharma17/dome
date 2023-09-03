@@ -14,4 +14,4 @@ A simple ToDo List Application, you can create tasks and read them and also mark
 ## Screenshots
 
 ![Screenshot](https://github.com/Mayank-Sharma17/Mayank-Sharma17/assets/113251342/4f84e36a-cf27-4a77-95b4-b60095603ca7)
-![Screenshot](https://github.com/Mayank-Sharma17/Mayank-Sharma17/assets/113251342/1de4f4b8-5188-4f3f-929d-c451f8e5a085)
+![Screenshot](https://github.com/Mayank-Sharma17/ToDo-List/assets/113251342/b43cf1eb-750d-4a95-bea1-f1cd34f64b5f)
