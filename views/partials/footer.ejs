@@ -1,17 +1,7 @@
     <footer>
         <!-- dynamic year to the footer using JS. -->
-        <p style="margin-top: 30%;" class="text-center">Copyright © <%= new Date().getFullYear() %>, Mayank Sharma</p>
+        <p class="text-center mt-5">Copyright © <%= new Date().getFullYear() %>, ToDo List</p>
     </footer>
-    <script>
-        function toggleStrikeThrough(checkbox) {
-            const taskText = checkbox.parentElement.querySelector('.task-text');
-
-            if (checkbox.checked) {
-                taskText.style.textDecoration = 'line-through';
-            } else {
-                taskText.style.textDecoration = 'none';
-            }
-        }
-    </script>
+    <script src="/scripts/index.js"></script>
 </body>
 </html>
