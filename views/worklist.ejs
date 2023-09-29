@@ -3,25 +3,24 @@
 <main>
   <!-- Dynamic day and date -->
   <div class="container-sm mb-3">
-    <h1 class="task-heading">Today's Task</h1>
-    <p class="date"><%= CurrentDay %></p>
+    <h1 class="task-heading">Daily Task</h1>
   </div>
   <div class="container-sm d-flex flex-column">
     <ul class="p-0 list-group">
       <!-- dynamic list -->
-      <% listTasks.forEach(function(task) { %>
+      <% dailylistTasks.forEach(function(dailytask) { %>
       <div class="container-sm d-flex flex-row p-0">
         <li class="list-group-item list">
           <input
             class="form-check-input me-3 checkbox mt-0"
             type="checkbox"
           />
-          <span class="task-text"><%= task %></span>
+          <span class="task-text"><%= dailytask %></span>
         </li>
       </div>
       <% }); %>
 
-      <form action="/" method="post">
+      <form action="/work" method="post">
         <div class="d-flex flex-row task-container">
           <button class="task-button">
             <?xml version="1.0" encoding="iso-8859-1"?>
@@ -67,7 +66,7 @@
           <input
             class="task-input ps-1"
             type="text"
-            name="newTask"
+            name="dailynewTask"
             placeholder="Add a task"
             autocomplete="off"
             required
@@ -80,7 +79,7 @@
     <img
       class="img-fluid main-svg"
       style="width: 35rem; margin-top: 4.5rem;"
-      src="/images/home.svg"
+      src="/images/work.svg"
       alt="checklist-image"
       width="300"
     />

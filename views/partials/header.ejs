@@ -22,19 +22,28 @@
     ></script>
 
     <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="page-wrap">
     <header>
-      <!-- Dynamic day and date -->
-      <div class="container-sm mt-5 mb-4">
-        <h1 class="task-heading">Today's Task</h1>
-        <p class="date"><%= CurrentDay %></p>
-      </div>
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg fixed-top" style="backdrop-filter: blur(10px);">
+        <div class="container-sm">
+          <span class="navbar-brand me-0">
+            do<span style="color: #c7aa61;">me</span>
+          </span>
+          <ul class="nav align-items-center">
+            <li class="nav-item">
+              <a class="nav-link fs-6 ps-2 pe-2 fw-semibold" href="/">Today List<a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6 ps-2 pe-2 fw-semibold" href="/work">Work List</a>
+            </li>
+            <li class="nav-item"><a class="nav-link ps-2 pe-2 fw-semibold" href="https://github.com/Mayank-Sharma17/ToDo-List"><img src="images/github.svg" alt="github-icon" width="30"></a></li>
+          </ul>
+        </div>
+      </nav>
     </header>

@@ -16,6 +16,7 @@ process.env.DIR_NAME === "production"
   : app.use(express.static("public"));
 
 let newTasks = [];
+let newdailyTasks=[];
 
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +32,16 @@ app.post("/", (req, res) => {
   let currentTask = req.body.newTask;
   newTasks.push(currentTask);
   res.redirect("/");
+});
+
+app.get("/work", (req, res) => {
+  res.render("worklist", { dailylistTasks: newdailyTasks });
+});
+
+app.post("/work", (req, res) => {
+  let currentdailyTask = req.body.dailynewTask;
+  newdailyTasks.push(currentdailyTask);
+  res.redirect("/work");
 });
 
 app.listen(port, () => {
