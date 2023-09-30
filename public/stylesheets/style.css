@@ -128,11 +128,6 @@ body {
   flex: 1;
 }
 
-.animate-svg {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
 /* Scroll Bar styling */
 body::-webkit-scrollbar {
   width: 5px;

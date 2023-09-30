@@ -31,10 +31,7 @@ checkboxes.forEach((checkbox) => {
 // remove image when a task is added
 document.addEventListener("DOMContentLoaded", () => {
   function hideMainSvg() {
-    mainSvg.classList.add("animate-svg");
-    setTimeout(() => {
-      mainSvg.style.display = "none";
-    }, 500);
+    mainSvg.style.display = "none";
   }
 
   form.addEventListener("submit", () => {
