@@ -35,11 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideImages() {
     mainSvg.style.display = "none";
   }
-
-  form.addEventListener("submit", () => {
-    hideImages();
-  });
-
+  
   // Check if the task list has at least one item
   if (taskList.children.length > 1 && !codeExecuted) {
     hideImages();
