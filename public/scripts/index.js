@@ -30,16 +30,19 @@ checkboxes.forEach((checkbox) => {
 
 // remove image when a task is added
 document.addEventListener("DOMContentLoaded", () => {
-  function hideMainSvg() {
+  let codeExecuted = false;
+
+  function hideImages() {
     mainSvg.style.display = "none";
   }
 
   form.addEventListener("submit", () => {
-    hideMainSvg();
+    hideImages();
   });
 
   // Check if the task list has at least one item
-  if (taskList.children.length > 1) {
-    hideMainSvg();
+  if (taskList.children.length > 1 && !codeExecuted) {
+    hideImages();
+    codeExecuted = true; // prevent repeated execution
   }
 });
