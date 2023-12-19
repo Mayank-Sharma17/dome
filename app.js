@@ -1,25 +1,36 @@
 import "dotenv/config";
 import express from "express";
 import path from "path";
-import userRouter from "./routes/index.js";
+import { connectToMongoDB } from "./connectDB.js";
+// import { restrictToLoggedinUserOnly, checkAuth } from "./middlewares/auth.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
-const __filename = new URL(import.meta.url).pathname;
-const __dirname = path.dirname(__filename);
+// Routes
+import taskRouter from "./routes/task.js";
+import staticRouter from "./routes/static.js";
+import userRouter from "./routes/user.js";
+import cookieParser from "cookie-parser";
+
+connectToMongoDB(process.env.MONGODB_URL).then(() => {
+  console.log("MongoDB connected...");
+});
+
+const publicPath = path.resolve("./public");
+const viewsPath = path.resolve("./views");
 
 app.set("view engine", "ejs");
-
-process.env.DIR_NAME === "production"
-  ? (app.set("views", path.join(__dirname, "views")),
-    app.use(express.static(__dirname + "/public/")))
-  : app.use(express.static("public"));
+app.set("views", viewsPath);
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(publicPath));
+app.use(cookieParser());
 
+app.use(staticRouter);
+app.use(taskRouter);
 app.use(userRouter);
 
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  console.log(`Server is listening on port ${port}...`);
 });

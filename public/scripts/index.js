@@ -1,6 +1,5 @@
 const navlinks = document.querySelectorAll(".nav-link");
 const windowPathName = window.location.pathname;
-const checkboxes = document.querySelectorAll(".checkbox");
 const form = document.querySelector("form");
 const inputField = document.querySelector(".task-input");
 const taskList = document.querySelector(".list-group");
@@ -15,19 +14,6 @@ navlinks.forEach((navlink) => {
   }
 });
 
-// line through when the checkbox is checked
-checkboxes.forEach((checkbox) => {
-  checkbox.addEventListener("click", function (event) {
-    const taskText = checkbox.parentElement.querySelector(".task-text");
-
-    if (event.target.checked) {
-      taskText.style.textDecoration = "line-through";
-    } else {
-      taskText.style.textDecoration = "none";
-    }
-  });
-});
-
 // remove image when a task is added
 document.addEventListener("DOMContentLoaded", () => {
   let codeExecuted = false;
@@ -35,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function hideImages() {
     mainSvg.style.display = "none";
   }
-  
+
   // Check if the task list has at least one item
-  if (taskList.children.length > 1 && !codeExecuted) {
+  if (taskList.children.length > 0 && !codeExecuted) {
     hideImages();
     codeExecuted = true; // prevent repeated execution
   }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+    <%- include("partials/links") %>
+  </head>
+  <body class="d-block p-0 m-3 overflow-hidden">
+    <div
+      style="max-width: 28rem"
+      class="d-flex flex-column align-items-center justify-content-center m-auto h-100"
+    >
+      <span class="navbar-brand me-0">
+        do<span style="color: #c7aa61">me</span>
+      </span>
+      <div
+        class="w-100 border border-secondary border-1 rounded-3"
+        style="max-width: 28rem; padding: 32px; background-color: #374347f2"
+      >
+        <div class="w-100">
+          <h3 style="font-size: 1.5rem; font-weight: 700">SignUp</h3>
+        </div>
+        <form action="/user" , method="post">
+          <div class="d-flex flex-column justify-content-center mt-3">
+            <label class="mb-1" style="font-size: 0.875rem">User Name</label>
+            <input
+              class="p-2 rounded-2 border border-0"
+              type="text"
+              required
+              name="username"
+              placeholder="user name"
+              style="
+                font-size: 0.875rem;
+                background-color: var(--bg-color);
+                color: #fff;
+              "
+            />
+            <label class="mt-3 mb-1" style="font-size: 0.875rem"
+              >Your Email</label
+            >
+            <input
+              class="p-2 rounded-2 border border-0"
+              type="text"
+              required
+              name="email"
+              placeholder="example123@gmail.com"
+              style="
+                font-size: 0.875rem;
+                background-color: var(--bg-color);
+                color: #fff;
+              "
+            />
+            <label class="mt-3 mb-1" style="font-size: 0.875rem"
+              >Password</label
+            >
+            <input
+              class="p-2 rounded-2 border border-0"
+              type="password"
+              required
+              name="password"
+              placeholder="••••••••"
+              style="
+                font-size: 0.875rem;
+                background-color: var(--bg-color);
+                color: #fff;
+              "
+            />
+
+            <button
+              class="mt-4 p-2 btn btn-primary"
+              type="submit"
+              style="
+                font-size: 0.875rem;
+                border: none;
+                background-color: var(--fade-yellow);
+                font-weight: 600;
+              "
+            >
+              SignUp
+            </button>
+            <p class="mt-4" style="font-size: 0.875rem; color: #ffffff88">
+              Already have an account?
+              <a style="color: #ffffff88" 80 href="/user/login">Login here</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
