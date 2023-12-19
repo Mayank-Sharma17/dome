@@ -8,7 +8,8 @@ export function setUser(user) {
       _id: user._id,
       email: user.email,
     },
-    jwtSecret
+    jwtSecret,
+    { expiresIn: "30d" }
   );
 }
 

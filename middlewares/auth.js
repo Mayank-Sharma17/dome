@@ -1,7 +1,7 @@
 import { getUser } from "../service/auth.js";
 
 export function restrictToLoggedinUserOnly(req, res, next) {
-  const tokenCookie  = req.cookies?.jwt;
+  const tokenCookie = req.cookies?.jwt;
   if (!tokenCookie) return res.redirect("/user/login");
 
   const user = getUser(tokenCookie); // _id, email
