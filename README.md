@@ -1,15 +1,14 @@
 # dome
 
-**dome** is a web application that serves as a task manager. This app features two distinct lists: one for tasks scheduled for the current day and another for tasks that recur daily. However, it's important to note that this application is limited in its functionality. Users can create tasks and view them but do not have the capability to modify or remove tasks. This limitation arises because the app does not utilize a database for storing task data.
-
-> **Note :** More features will be added soon.
+**Dome** has undergone significant improvements to become a user-friendly task manager web application with added security measures. Now equipped with a database, users can easily create, modify, view, and remove tasks. The application ensures secure storage of user data, employing bcrypt.js for password hashing and implementing JSON Web Token (JWT) for enhanced authentication during signup and login.
 
 ## Teach Stack :
 
 - **Node.js :** Runtime for server-side JavaScript.
 - **Express.js :** Backend framework for routing and logic.
 - **EJS :** Templating engine for dynamic HTML.
-- **CSS and Bootstrap :** Styling for user interface.
+- **Bootstrap and css :** Styling for user interface.
+- **MongoDB :** A NoSQL database.
 
 ## Screenshots
 
