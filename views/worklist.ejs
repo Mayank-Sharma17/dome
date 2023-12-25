@@ -9,58 +9,53 @@
     <ul class="p-0 list-group">
       <!-- dynamic list -->
       <% dailylistTasks.forEach(function(dailytask) { %>
-      <div class="container-sm d-flex flex-row p-0">
-        <li class="list-group-item list d-flex align-items-center">
-          <form id="<%= dailytask._id %>" action="/work/update/<%= dailytask._id %>" method="post"></form>
-          <input
-            class="form-check-input me-3 checkbox mt-0"
-            type="checkbox"
-            name="status"
-            form="<%= dailytask._id %>"
-            onchange="this.form.submit()"
-            <% if(dailytask.status) { %>
-              checked
-            <% } %>  
-          />
-          <p class="wrap task-text me-auto mb-0"><%= dailytask.task %></p>
+      <li class="rounded-0 list-group-item list d-flex align-items-center">
+        <form id="<%= dailytask._id %>" action="/work/update/<%= dailytask._id %>" method="post"></form>
+        <input
+          class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
+          type="checkbox"
+          name="status"
+          form="<%= dailytask._id %>"
+          onchange="this.form.submit()"
+          <% if(dailytask.status) { %>
+            checked
+          <% } %>  
+        />
+        <p class="wrap task-text me-auto mb-0"><%= dailytask.task %></p>
+        <button type="button" class="ms-3 fa-button" data-bs-toggle="modal" data-bs-target="#update-task-<%= dailytask._id %>">
+          <i class="fa-regular fa-pen-to-square fa-sm util-icon"></i>
+        </button>
 
-          <button type="button" class="fa-button" data-bs-toggle="modal" data-bs-target="#update-task-<%= dailytask._id %>">
-            <i class="fa-regular fa-pen-to-square fa-sm util-icon"></i>
-          </button>
-
-          <!-- modals -->
-          <div class="modal fade" id="update-task-<%= dailytask._id %>" tabindex="-1" aria-labelledby="updateTask" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header" style="border: none;">
-                  <h5 class="modal-title" style="color: #2c3639; font-weight: 700;">Update Task</h5>
-                  <button type="button" style="border: none; background: transparent;" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark fa-xl" style="color: #2c3639;"></i></button>
-                </div>
-                <form method="post" action="/work/update/<%= dailytask._id %>">
-                  <input
-                    class="dialog-input ps-3"
-                    type="text"
-                    name="updateTask"
-                    placeholder="update task..."
-                    autocomplete="off"
-                    required
-                    />
-                    <div class="modal-footer" style="border: none;">
-                      <button type="submit" class="btn btn-primary bt-sm" style="background-color: #2c3639; color: #c7aa61; border: none; font-weight: 600;">Update</button>
-                    </div>
-                </form>
+        <!-- modals -->
+        <div class="modal fade" id="update-task-<%= dailytask._id %>" tabindex="-1" aria-labelledby="updateTask" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header" style="border: none;">
+                <h5 class="modal-title" style="color: #2c3639; font-weight: 700;">Update Task</h5>
+                <button type="button" style="border: none; background: transparent;" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark fa-xl" style="color: #2c3639;"></i></button>
               </div>
+              <form method="post" action="/work/update/<%= dailytask._id %>">
+                <input
+                  class="dialog-input ps-3"
+                  type="text"
+                  name="updateTask"
+                  placeholder="update task..."
+                  autocomplete="off"
+                  required
+                  />
+                  <div class="modal-footer" style="border: none;">
+                    <button type="submit" class="btn btn-primary bt-sm" style="background-color: #2c3639; color: #c7aa61; border: none; font-weight: 600;">Update</button>
+                  </div>
+              </form>
             </div>
           </div>
+        </div>
 
-          <div class="ms-2">
-            <form method="post" action="/work/delete/<%= dailytask._id %>">
-              <button type="submit" class="fa-button" id="delete-task"><i class="fa-regular fa-trash-can fa-sm util-icon"></i></button>
-            </form>
-          </div>
-          <!-- <button class="fa-button ms-2"><i class="fa-regular fa-star fa-sm util-icon"></i></button> -->
-        </li>
-      </div>
+        <form method="post" action="/work/delete/<%= dailytask._id %>">
+          <button type="submit" class="ms-2 fa-button" id="delete-task"><i class="fa-regular fa-trash-can fa-sm util-icon"></i></button>
+        </form>
+        <!-- <button class="fa-button ms-2"><i class="fa-regular fa-star fa-sm util-icon"></i></button> -->
+      </li>
       <% }); %>
     </ul>
   </div>
