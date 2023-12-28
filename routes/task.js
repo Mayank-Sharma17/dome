@@ -3,6 +3,7 @@ import {
   handleTodayList,
   handleCreateTodayTask,
   handleUpdateTask,
+  handleTaskStatus,
   handleDeleteTask,
   handleWorkList,
   handleCreateWorkTask,
@@ -11,10 +12,19 @@ import { restrictToLoggedinUserOnly, checkAuth } from "../middlewares/auth.js";
 
 const router = express.Router();
 
-router.get("/today", restrictToLoggedinUserOnly, handleTodayList);
+router
+  .route("/today")
+  .all(restrictToLoggedinUserOnly)
+  .get(handleTodayList)
+  .post(handleTaskStatus);
+router.route("today").get();
 router.post("/today/create", checkAuth, handleCreateTodayTask);
 
-router.get("/work", restrictToLoggedinUserOnly, handleWorkList);
+router
+  .route("/work")
+  .all(restrictToLoggedinUserOnly)
+  .get(handleWorkList)
+  .post(handleTaskStatus);
 router.post("/work/create", checkAuth, handleCreateWorkTask);
 
 router.post("/:list/update/:taskId", handleUpdateTask);

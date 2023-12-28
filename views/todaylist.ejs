@@ -11,13 +11,11 @@
       <!-- dynamic list -->
       <% listTasks.forEach(function(taskObject) { %>
       <li class="rounded-0 list-group-item list d-flex align-items-center">
-        <form id="<%= taskObject._id %>" action="/today/update/<%= taskObject._id %>" method="post"></form>
         <input
           class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
           type="checkbox"
           name="status"
-          form="<%= taskObject._id %>"
-          onchange="this.form.submit()"
+          data-task-id="<%= taskObject._id %>"
           <% if(taskObject.status) { %>
             checked
           <% } %>  

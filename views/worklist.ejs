@@ -10,16 +10,14 @@
       <!-- dynamic list -->
       <% dailylistTasks.forEach(function(dailytask) { %>
       <li class="rounded-0 list-group-item list d-flex align-items-center">
-        <form id="<%= dailytask._id %>" action="/work/update/<%= dailytask._id %>" method="post"></form>
         <input
           class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
           type="checkbox"
           name="status"
-          form="<%= dailytask._id %>"
-          onchange="this.form.submit()"
+          data-task-id="<%= dailytask._id %>"
           <% if(dailytask.status) { %>
             checked
-          <% } %>  
+          <% } %>   
         />
         <p class="wrap task-text me-auto mb-0"><%= dailytask.task %></p>
         <button type="button" class="ms-3 fa-button" data-bs-toggle="modal" data-bs-target="#update-task-<%= dailytask._id %>">

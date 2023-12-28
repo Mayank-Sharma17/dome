@@ -2,7 +2,10 @@ import { tasks } from "../models/task.js";
 
 export async function handleTodayList(req, res) {
   try {
-    const todayTasksObj = await tasks.find({ taskType: "today", createdBy: req.user._id }).lean().exec();
+    const todayTasksObj = await tasks
+      .find({ taskType: "today", createdBy: req.user._id })
+      .lean()
+      .exec();
     let options = { weekday: "long", day: "numeric", month: "long" };
     let today = new Date().toLocaleDateString("default", options);
 
@@ -19,7 +22,11 @@ export async function handleTodayList(req, res) {
 export async function handleCreateTodayTask(req, res) {
   try {
     let currentTask = req.body.newTask;
-    const newTask = new tasks({ task: currentTask, taskType: "today", createdBy: req.user._id });
+    const newTask = new tasks({
+      task: currentTask,
+      taskType: "today",
+      createdBy: req.user._id,
+    });
 
     await newTask.save();
 
@@ -32,7 +39,10 @@ export async function handleCreateTodayTask(req, res) {
 
 export async function handleWorkList(req, res) {
   try {
-    const workTasksObj = await tasks.find({ taskType: "work", createdBy: req.user._id }).lean().exec();
+    const workTasksObj = await tasks
+      .find({ taskType: "work", createdBy: req.user._id })
+      .lean()
+      .exec();
     res.render("worklist", { dailylistTasks: workTasksObj });
   } catch (error) {
     console.log("Error in fetching work tasks:", error);
@@ -43,7 +53,11 @@ export async function handleWorkList(req, res) {
 export async function handleCreateWorkTask(req, res) {
   try {
     let currentWorkTask = req.body.dailynewTask;
-    const newWorkTask = new tasks({ task: currentWorkTask, taskType: "work", createdBy: req.user._id });
+    const newWorkTask = new tasks({
+      task: currentWorkTask,
+      taskType: "work",
+      createdBy: req.user._id,
+    });
 
     await newWorkTask.save();
 
@@ -57,26 +71,38 @@ export async function handleCreateWorkTask(req, res) {
 export async function handleUpdateTask(req, res) {
   try {
     const updatedTask = req.body.updateTask;
-    const newStatus = Boolean(req.body.status);
     const currTaskId = req.params.taskId;
 
-    await tasks.findOneAndUpdate({ _id: currTaskId }, { $set: { task: updatedTask, status: newStatus } });
+    await tasks.findOneAndUpdate(
+      { _id: currTaskId },
+      { $set: { task: updatedTask } }
+    );
 
-    if (req.params.list === "today") {
-      res.redirect("/today");
-    } else {
-      res.redirect("/work");
-    }
+    res.redirect(req.params.list === "today" ? "/today" : "/work");
   } catch (error) {
     console.log("Error in updating today task:", error);
     res.status(500).send("Internal Server Error");
   }
 }
 
-export async function handleDeleteTask(req, res) {
+export async function handleTaskStatus(req, res) {
+  const taskId = req.body.currtaskid;
+  const newStatus = req.body.status;
   try {
-    const currTaskId = req.params.taskId;
+    await tasks.findOneAndUpdate(
+      { _id: taskId },
+      { $set: { status: newStatus } }
+    );
+    res.json({ success: true });
+  } catch (error) {
+    console.error("Error updating task status:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+}
 
+export async function handleDeleteTask(req, res) {
+  const currTaskId = req.params.taskId;
+  try {
     await tasks.findOneAndDelete({ _id: currTaskId });
 
     if (req.params.list === "today") {
