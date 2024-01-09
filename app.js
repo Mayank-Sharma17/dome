@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import path from "path";
 import { connectToMongoDB } from "./connectDB.js";
-// import { restrictToLoggedinUserOnly, checkAuth } from "./middlewares/auth.js";
 
 const app = express();
 const port = process.env.PORT;

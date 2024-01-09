@@ -7,10 +7,10 @@
     <p class="date"><%= CurrentDay %></p>
   </div>
   <div class="container-sm d-flex flex-column">
-    <ul class="p-0 list-group">
+    <ul class="p-0 list-group sortable-list">
       <!-- dynamic list -->
       <% listTasks.forEach(function(taskObject) { %>
-      <li class="rounded-0 list-group-item list d-flex align-items-center">
+      <li class="rounded-0 list-group-item list d-flex align-items-center list-item" draggable="true">
         <input
           class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
           type="checkbox"

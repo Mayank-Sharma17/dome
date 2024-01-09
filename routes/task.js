@@ -17,7 +17,6 @@ router
   .all(restrictToLoggedinUserOnly)
   .get(handleTodayList)
   .post(handleTaskStatus);
-router.route("today").get();
 router.post("/today/create", checkAuth, handleCreateTodayTask);
 
 router

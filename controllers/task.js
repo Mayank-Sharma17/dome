@@ -45,7 +45,7 @@ export async function handleWorkList(req, res) {
       .exec();
     res.render("worklist", { dailylistTasks: workTasksObj });
   } catch (error) {
-    console.log("Error in fetching work tasks:", error);
+    console.error("Error in fetching work tasks:", error);
     res.status(500).send("Internal Server Error");
   }
 }
@@ -80,7 +80,7 @@ export async function handleUpdateTask(req, res) {
 
     res.redirect(req.params.list === "today" ? "/today" : "/work");
   } catch (error) {
-    console.log("Error in updating today task:", error);
+    console.error("Error in updating today task:", error);
     res.status(500).send("Internal Server Error");
   }
 }
@@ -93,7 +93,7 @@ export async function handleTaskStatus(req, res) {
       { _id: taskId },
       { $set: { status: newStatus } }
     );
-    res.json({ success: true });
+    res.status(204).json({ success: true });
   } catch (error) {
     console.error("Error updating task status:", error);
     res.status(500).json({ success: false, error: "Internal Server Error" });
@@ -111,7 +111,7 @@ export async function handleDeleteTask(req, res) {
       res.redirect("/work");
     }
   } catch (error) {
-    console.log("Error in deleting today task:", error);
+    console.error("Error in deleting today task:", error);
     res.status(500).send("Internal Server Error");
   }
 }

@@ -34,13 +34,28 @@ body {
   cursor: default;
 }
 
-.nav-link {
+.nav-link,
+.nav-link:hover {
   color: var(--yellowish-white);
 }
 
-.nav-link:hover,
 .active {
   color: var(--fade-yellow);
+}
+
+.nav-link::after {
+  content: "";
+  display: block;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+  background-color: var(--fade-yellow);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* headings day/date */
@@ -106,7 +121,7 @@ body {
 }
 
 input:checked + p {
-  text-decoration: line-through var(--fade-yellow) 2px;
+  text-decoration: line-through var(--fade-yellow) 1.8px;
 }
 
 /* modals */
