@@ -1,89 +1,146 @@
-<%- include("partials/header") %>
-
-<main>
-  <!-- Dynamic day and date -->
-  <div class="container-sm mb-3">
-    <h1 class="task-heading">Today's Task</h1>
-    <p class="date"><%= CurrentDay %></p>
-  </div>
-  <div class="container-sm d-flex flex-column">
-    <ul class="p-0 list-group sortable-list">
-      <!-- dynamic list -->
-      <% listTasks.forEach(function(taskObject) { %>
-      <li class="rounded-0 list-group-item list d-flex align-items-center list-item" draggable="true">
-        <input
-          class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
-          type="checkbox"
-          name="status"
-          data-task-id="<%= taskObject._id %>"
-          <% if(taskObject.status) { %>
-            checked
-          <% } %>  
-        />
-        <p class="wrap task-text me-auto mb-0"><%= taskObject.task %></p>
-        <button type="button" class="ms-3 fa-button" data-bs-toggle="modal" data-bs-target="#update-task-<%= taskObject._id %>">
-          <i class="fa-regular fa-pen-to-square fa-sm util-icon"></i>
-        </button>
-
-        <!-- modals -->
-        <div class="modal fade" id="update-task-<%= taskObject._id %>" tabindex="-1" aria-labelledby="updateTask" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header" style="border: none;">
-                <h5 class="modal-title" style="color: #2c3639; font-weight: 700;">Update Task</h5>
-                <button type="button" style="border: none; background: transparent;" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark fa-xl" style="color: #2c3639;"></i></button>
-              </div>
-              <form method="post" action="/today/update/<%= taskObject._id %>">
-                <input
-                  class="dialog-input ps-3"
-                  type="text"
-                  name="updateTask"
-                  placeholder="update task..."
-                  autocomplete="off"
-                  required
-                  />
-                  <div class="modal-footer" style="border: none;">
-                    <button type="submit" class="btn btn-primary bt-sm" style="background-color: #2c3639; color: #c7aa61; border: none; font-weight: 600;">Update</button>
-                  </div>
-              </form>
-            </div>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dome</title>
+    <%- include("partials/links") %>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <%- include("partials/header") %>
+      <main>
+        <!-- Dynamic day and date -->
+        <div class="container-sm mb-3">
+          <h1 class="task-heading">Today's Task</h1>
+          <p class="date"><%= CurrentDay %></p>
         </div>
+        <div class="container-sm d-flex flex-column">
+          <ul class="p-0 list-group sortable-list">
+            <!-- dynamic list -->
+            <% listTasks.forEach(function(taskObject) { %>
+            <li
+              class="rounded-0 list-group-item list d-flex align-items-center list-item"
+              draggable="true"
+            >
+              <input
+                class="form-check-input me-3 checkbox mt-0 flex-shrink-0"
+                type="checkbox"
+                name="status"
+                data-task-id="<%= taskObject._id %>"
+                <% if(taskObject.status) { %>
+                  checked
+                <% } %>
+              />
+              <p class="wrap task-text me-auto mb-0"><%= taskObject.task %></p>
+              <button
+                type="button"
+                class="ms-3 fa-button"
+                data-bs-toggle="modal"
+                data-bs-target="#update-task-<%= taskObject._id %>"
+              >
+                <i class="fa-regular fa-pen-to-square fa-sm util-icon"></i>
+              </button>
 
-        <form method="post" action="/today/delete/<%= taskObject._id %>">
-          <button type="submit" class="ms-2 fa-button" id="delete-task"><i class="fa-regular fa-trash-can fa-sm util-icon"></i></button>
-        </form>
-        <!-- <button class="fa-button ms-2"><i class="fa-regular fa-star fa-sm util-icon"></i></button> -->
-      </li>
-      <% }); %>
-    </ul>
-  </div>
-  <div class="container-sm">
-    <form action="/today/create" method="post">
-      <div class="d-flex flex-row task-container">
-        <button class="fa-button">
-          <i class="fa-solid fa-circle-plus fa-lg me-3 plus-icon"></i>
-        </button>
-        <input
-          class="task-input ps-1"
-          type="text"
-          name="newTask"
-          placeholder="Add a task"
-          autocomplete="off"
-          required
-        />
-      </div>
-    </form>
-  </div>
-  <div class="d-flex justify-content-center align-items-center">
-    <img
-      class="img-fluid main-svg"
-      style="width: 20.5rem; margin-top: 4.5rem; opacity: 0.7;"
-      src="/images/home.svg"
-      alt="checklist-image"
-      width="300"
-    />
-  </div>
-</main>
-</div>
-<%- include("partials/footer") %>
+              <!-- modals -->
+              <div
+                class="modal fade"
+                id="update-task-<%= taskObject._id %>"
+                tabindex="-1"
+                aria-labelledby="updateTask"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header" style="border: none">
+                      <h5
+                        class="modal-title"
+                        style="color: #2c3639; font-weight: 700"
+                      >
+                        Update Task
+                      </h5>
+                      <button
+                        type="button"
+                        style="border: none; background: transparent"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <i
+                          class="fa-solid fa-circle-xmark fa-xl"
+                          style="color: #2c3639"
+                        ></i>
+                      </button>
+                    </div>
+                    <form
+                      method="post"
+                      action="/today/update/<%= taskObject._id %>"
+                    >
+                      <input
+                        class="dialog-input ps-3"
+                        type="text"
+                        name="updateTask"
+                        placeholder="update task..."
+                        autocomplete="off"
+                        required
+                      />
+                      <div class="modal-footer" style="border: none">
+                        <button
+                          type="submit"
+                          class="btn btn-primary bt-sm"
+                          style="
+                            background-color: #2c3639;
+                            color: #c7aa61;
+                            border: none;
+                            font-weight: 600;
+                          "
+                        >
+                          Update
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <form method="post" action="/today/delete/<%= taskObject._id %>">
+                <button type="submit" class="ms-2 fa-button" id="delete-task">
+                  <i class="fa-regular fa-trash-can fa-sm util-icon"></i>
+                </button>
+              </form>
+              <!-- <button class="fa-button ms-2"><i class="fa-regular fa-star fa-sm util-icon"></i></button> -->
+            </li>
+            <% }); %>
+          </ul>
+        </div>
+        <div class="container-sm">
+          <form action="/today/create" method="post">
+            <div class="d-flex flex-row task-container">
+              <button class="fa-button">
+                <i class="fa-solid fa-circle-plus fa-lg me-3 plus-icon"></i>
+              </button>
+              <input
+                class="task-input ps-1"
+                type="text"
+                name="newTask"
+                placeholder="Add a task"
+                autocomplete="off"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="d-flex justify-content-center align-items-center">
+          <img
+            class="img-fluid main-svg"
+            style="width: 20.5rem; margin-top: 4.5rem; opacity: 0.7"
+            src="/images/home.svg"
+            alt="checklist-image"
+            width="300"
+          />
+        </div>
+      </main>
+    </div>
+    <%- include('partials/footer') %>
+    <script src="scripts/index.js"></script>
+  </body>
+</html>
