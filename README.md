@@ -1,16 +1,18 @@
-# dome
+## <img src="./public/images/logo.png" alt="logo" width="100">
 
 **Dome** has undergone significant improvements to become a user-friendly task manager web application with added security measures. Now equipped with a database, users can easily create, modify, view, and remove tasks. The application ensures secure storage of user data, employing bcrypt.js for password hashing and implementing JSON Web Token (JWT) for enhanced authentication during signup and login.
 
-## Teach Stack :
+## Teach Stack
 
-- **Node.js :** Runtime for server-side JavaScript.
-- **Express.js :** Backend framework for routing and logic.
-- **EJS :** Templating engine for dynamic HTML.
-- **Bootstrap and css :** Styling for user interface.
-- **MongoDB :** A NoSQL database.
+- **Node.js :** A JavaScript runtime environment used for server-side development.
+- **Express.js :** A backend web application framework for building RESTful APIs with Node.js.
+- **EJS :** A simple templating language that lets you generate HTML markup with plain JavaScript.
+- **Bootstrap and css :** A css framework used for styling the user interface.
+- **MongoDB :** A NoSQL database used for storing tasks and users data.
 
-## Local Setup
+## Getting Started
+
+To run the application locally, follow these steps:
 
 ### 1. Clone the repository:
 
