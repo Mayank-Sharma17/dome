@@ -1,4 +1,4 @@
-## <img src="./public/images/logo.png" alt="logo" width="100">
+## <img src="./client/public/images/logo.png" alt="logo" width="100">
 
 **Dome** has undergone significant improvements to become a user-friendly task manager web application with added security measures. Now equipped with a database, users can easily create, modify, view, and remove tasks. The application ensures secure storage of user data, employing bcrypt.js for password hashing and implementing JSON Web Token (JWT) for enhanced authentication during signup and login.
 

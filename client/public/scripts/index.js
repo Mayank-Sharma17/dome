@@ -8,6 +8,12 @@ const checkboxes = document.querySelectorAll(".checkbox");
 const sortableList = document.querySelector(".sortable-list");
 const items = sortableList.querySelectorAll(".list-item");
 
+window.si =
+  window.si ||
+  function () {
+    (window.siq = window.siq || []).push(arguments);
+  };
+
 // Active nav links
 navlinks.forEach((navlink) => {
   const currPathName = new URL(navlink.href).pathname;
