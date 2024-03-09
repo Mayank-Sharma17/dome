@@ -1,5 +1,5 @@
-const navlinks = document.querySelectorAll(".nav-link");
-const windowPathName = window.location.pathname;
+const navLinks = document.querySelectorAll(".nav-link");
+const activePage = window.location.pathname;
 const form = document.querySelector("form");
 const inputField = document.querySelector(".task-input");
 const taskList = document.querySelector(".list-group");
@@ -15,11 +15,10 @@ window.si =
   };
 
 // Active nav links
-navlinks.forEach((navlink) => {
-  const currPathName = new URL(navlink.href).pathname;
-
-  if (windowPathName === currPathName) {
-    navlink.classList.add("active");
+navLinks.forEach((link) => {
+  console.log(link);
+  if (link.href.includes(`${activePage}`)) {
+    link.classList.add("active");
   }
 });
 
@@ -28,7 +27,7 @@ function handleCheckboxStatus() {
   const taskId = this.getAttribute("data-task-id");
   const newStatus = this.checked;
 
-  fetch(`${windowPathName}`, {
+  fetch(`${activePage}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",

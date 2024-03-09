@@ -1,6 +1,6 @@
 ## <img src="./client/public/images/logo.png" alt="logo" width="100">
 
-**Dome** has undergone significant improvements to become a user-friendly task manager web application with added security measures. Now equipped with a database, users can easily create, modify, view, and remove tasks. The application ensures secure storage of user data, employing bcrypt.js for password hashing and implementing JSON Web Token (JWT) for enhanced authentication during signup and login.
+**Dome** has undergone significant improvements to become a user-friendly task manager web application with added security measures. Now equipped with a **database**, users can easily create, modify, view, and remove tasks. The application ensures secure storage of user data, employing **bcrypt.js** for password hashing and implementing **JSON Web Token (JWT)** for enhanced **authentication** during signup and login.
 
 ## Teach Stack
 
@@ -59,6 +59,10 @@ npm run dev
 The application will be accessible at http://localhost:3000 by default. Adjust the port number if needed.
 
 ## Screenshots
+
+![Screenshot](https://github.com/Mayank-Sharma17/dome/assets/113251342/389b0798-bd94-4be5-bc80-086b55629a8b)
+
+![Screenshot](https://github.com/Mayank-Sharma17/dome/assets/113251342/923dcba1-27dc-4398-a192-4397d2751a41)
 
 ![Screenshot](https://github.com/Mayank-Sharma17/dome/assets/113251342/c5301c16-63f8-46bd-af67-57b2cb14d612)
 
